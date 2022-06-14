@@ -39,6 +39,18 @@ namespace XadrezConsole.tabuleiro
             p.posicao = pos;
         }
 
+        public Peca RmPeca(Posicao pos)
+        {
+            if (GetPeca(pos) == null)
+            {
+                return null;
+            }
+            Peca aux = GetPeca(pos);
+            aux.posicao = null;
+            pecas[pos.linha, pos.coluna] = null;
+            return aux;
+        }
+
         public bool PosicaoValida(Posicao pos)
         {
             if (pos.linha < 0 || pos.linha >= linhas || pos.coluna < 0 || pos.coluna >= colunas)
